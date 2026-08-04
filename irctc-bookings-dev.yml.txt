@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: irctc-bookings
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo2
+    # url: jdbc:mysql://host.docker.internal:3306/demo
+    username: root
+    password: Surya@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  kafka:
+    producer:
+      acks: all
+
+server:
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+info:
+  application:
+    name: Payment Service
+    description: IRCTC Payment Microservice
+    version: 1.0.0
+
+bootstrap:
+  servers: localhost:9092
+
+key:
+  serializer: org.apache.kafka.common.serialization.StringSerializer
+
+value:
+  serializer: org.apache.kafka.common.serialization.StringSerializer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
