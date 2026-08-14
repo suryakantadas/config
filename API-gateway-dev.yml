@@ -16,7 +16,7 @@ spring:
         webflux:
           routes:
             - id: irctc-booking-service
-              uri: lb:///irctc-bookings
+              uri: lb://irctc-bookings
               predicates:
                 - Path=/irctc/booking/**
               filters:
